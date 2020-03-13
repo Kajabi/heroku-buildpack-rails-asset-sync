@@ -1,0 +1,5 @@
+#!/bin/sh
+
+ENV_DIR=$3
+
+[ -f $ENV_DIR/ASSET_SYNC_BUCKET ]
