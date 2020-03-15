@@ -30,12 +30,12 @@ if [ ! -z "$ASSET_SYNC_BUCKET" ]; then
     unzip -j $RCLONE_DIST.zip -d $RCLONE_DIR
   fi
 
+  export PATH="$RCLONE_DIR:$PATH"
+  echo "Using rclone: $(rclone --version | head -n 1)"
+
   if [ -f $BUILD_DIR/heroku/asset-sync-setup.sh]; then
     source $BUILD_DIR/heroku/asset-sync-setup.sh
   fi
-
-  export PATH="$RCLONE_DIR:$PATH"
-  echo "Using rclone: $(rclone --version | head -n 1)"
 
   echo "-----> Syncing public directory with bucket [$ASSET_SYNC_BUCKET]..."
 
