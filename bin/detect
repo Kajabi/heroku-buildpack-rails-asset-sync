@@ -1,2 +1,3 @@
 #!/bin/sh
+echo "Rails Asset Sync"
 exit 0
