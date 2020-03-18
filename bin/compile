@@ -22,7 +22,7 @@ fi
 
 if [ ! -z "$ASSET_SYNC_BUCKET" ]; then
   RCLONE_DIST=rclone-current-linux-amd64
-  RCLONE_DIR=$CACHE_DIR/vendor/rclone
+  RCLONE_DIR=$CACHE_DIR/rclone
 
   if [[ ! -d $RCLONE_DIR ]]; then
     echo "-----> Downloading rclone"
@@ -56,6 +56,6 @@ if [ ! -z "$ASSET_SYNC_BUCKET" ]; then
 
   if [[ ! "$DELETE_APP_ASSETS" =~ ^(0|false)$ ]]; then
     echo "Removing app/assets"
-    rm -rf app/assets
+    rm -rf $BUILD_DIR/app/assets
   fi
 fi
