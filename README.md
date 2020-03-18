@@ -30,6 +30,14 @@ export RCLONE_CONFIG_ASSET_SYNC_ACCESS_KEY_ID=$(cat $ENV_DIR/AWS_ACCESS_KEY)
 export RCLONE_CONFIG_ASSET_SYNC_SECRET_ACCESS_KEY=$(cat $ENV_DIR/AWS_SECRET_KEY)
 ```
 
+### DELETE_COMPILED_ASSETS
+
+By default this buildpack deletes compiled assets to reduce slug size. Disable this by setting `DELETE_COMPILED_ASSETS=false` on the app that builds the slug (i.e. staging).
+
+### DELETE_APP_ASSETS
+
+By default this buildpack also deletes `app/assets` since uncompiled assets probably aren't needed at runtime. Set `DELETE_APP_ASSETS=false` on the app that builds the slug if your application accesses uncompiled assets at runtime for some reason.
+
 ## HBD
 
 Use with caution. Heroku [does not advise using the asset-sync gem](https://devcenter.heroku.com/articles/please-do-not-use-asset-sync), which this buildpack essentially replicates (albeit greatly simplified). We weighed the downsides outlined by Heroku and felt our use case was appropriate, but keeping assets as part of your app's slug is more deterministic and therefore much simpler to deploy with confidence.
