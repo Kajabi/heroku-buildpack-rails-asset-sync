@@ -13,7 +13,7 @@ Its goals are:
 
 The buildpack looks for the environment variable `ASSET_SYNC_BUCKET`. It must be set on the Heroku app. Set it to the bucket name you want assets synced to.
 
-⚠️ **Do not store anything else in this bucket! The sync operation is destructive: it will delete everything in the bucket not present in the local public directory**.
+⚠️ **Do not store anything else in this bucket! The sync operation is destructive: it will delete everything in the bucket not present in the local public directory.**
 
 ### rclone config
 

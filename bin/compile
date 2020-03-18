@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # bin/compile <build-dir> <cache-dir> <env-dir>
 
+set -eo pipefail
+
 BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
@@ -33,7 +35,7 @@ if [ ! -z "$ASSET_SYNC_BUCKET" ]; then
   export PATH="$RCLONE_DIR:$PATH"
   echo "Using rclone: $(rclone --version | head -n 1)"
 
-  if [ -f $BUILD_DIR/heroku/asset-sync-setup.sh]; then
+  if [ -f $BUILD_DIR/heroku/asset-sync-setup.sh ]; then
     source $BUILD_DIR/heroku/asset-sync-setup.sh
   fi
 
