@@ -39,13 +39,9 @@ if [ ! -z "$ASSET_SYNC_BUCKET" ]; then
     source $BUILD_DIR/heroku/asset-sync-setup.sh
   fi
 
-  echo "-----> Syncing public directory with bucket [$ASSET_SYNC_BUCKET]..."
+  echo "-----> Copying public directory with bucket [$ASSET_SYNC_BUCKET]..."
 
-  # Sync the entire public directory with the remote. This command will delete
-  # any assets from the remote not present in the local public directory (but
-  # not vice-versa). Assuming the Heroku build cache is not cleared, this means
-  # the remote will always have around 3 fingerprinted versions of each asset.
-  rclone sync $BUILD_DIR/public asset_sync:$ASSET_SYNC_BUCKET -v --checksum
+  rclone copy $BUILD_DIR/public asset_sync:$ASSET_SYNC_BUCKET -v --checksum
 
   if [[ ! "$DELETE_COMPILED_ASSETS" =~ ^(0|false)$ ]]; then
     echo "Removing compiled assets from public directory"
